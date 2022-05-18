@@ -3,9 +3,6 @@ package services
 import (
 	"context"
 	"fmt"
-	"io"
-	"log"
-	"time"
 
 	"github.com/abuffon/fullcycle-grpc/pb"
 )

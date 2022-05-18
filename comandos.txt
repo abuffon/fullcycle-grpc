@@ -1,5 +1,5 @@
 docker build -t abuffon/go .
-docker run --rm -it -v $(pwd):/go/src abuffon/go bash
+docker run --rm -it --name golang_grpc -v $(pwd):/go/src abuffon/go bash
 
 protoc --proto_path=proto proto/*.proto --go_out=pb --go-grpc_out=pb
 --novo comando
@@ -7,3 +7,9 @@ protoc --proto_path=proto/ proto/*.proto --plugin=$(go env GOPATH)/bin/protoc-ge
 
 go get google.golang.org/grpc
 go run cmd/server/server.go
+
+docker exec -it golang_grpc bash
+evans -r repl --host localhost --port 50051
+
+Inside evans
+service UserService
