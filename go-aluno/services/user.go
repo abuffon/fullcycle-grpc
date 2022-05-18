@@ -3,9 +3,11 @@ package services
 import (
 	"context"
 	"fmt"
+	"io"
+	"log"
+	"time"
 
 	"github.com/abuffon/fullcycle-grpc/pb"
-	"github.com/abuffon/fullcycle-grpc/services"
 )
 
 //type UserServiceServer interface {
@@ -21,14 +23,14 @@ func NewUserService() *UserService {
 	return &UserService{}
 }
 
-func (*UserService) AddUser(ctx context.Context, req *pb.User) (*pb.User, error)  {
+func (*UserService) AddUser(ctx context.Context, req *pb.User) (*pb.User, error) {
 
-	//Insert DB
+	// Insert - Database
 	fmt.Println(req.Name)
 
-	return &pb.User {
-		Id: "123"
-		Name: req.GetName();
-		Email: req.GetEmail();
+	return &pb.User{
+		Id:    "123",
+		Name:  req.GetName(),
+		Email: req.GetEmail(),
 	}, nil
 }

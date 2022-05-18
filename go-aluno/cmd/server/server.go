@@ -4,9 +4,10 @@ import (
 	"log"
 	"net"
 
-	"github.com/abuffon/fc2-grpc/pb"
-	"github.com/abuffon/fc2-grpc/services"
+	"github.com/abuffon/fullcycle-grpc/pb"
+	"github.com/abuffon/fullcycle-grpc/services"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 )
 
 func main() {
@@ -17,7 +18,7 @@ func main() {
 	}
 
 	grpcServer := grpc.NewServer()
-	pd.RegisterUserServiceServer(grpcServer, services.NewUserService)
+	pb.RegisterUserServiceServer(grpcServer, &services.UserService{})
 
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("Could not serve: %v", err)
