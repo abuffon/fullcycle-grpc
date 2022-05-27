@@ -13,3 +13,4 @@ evans -r repl --host localhost --port 50051
 
 Inside evans
 service UserService
+call AddUser
